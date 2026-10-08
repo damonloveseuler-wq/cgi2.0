@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>천지인 2.0 키보드</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-container">
+    <div class="keyboard-card">
+      <!-- 텍스트 디스플레이 영역 -->
+      <div class="display-box">
+        <div id="outputText" class="output-text placeholder">키보드를 입력하세요...</div>
+        <div id="gestureFeedback" class="gesture-feedback"></div>
+      </div>
+
+      <!-- 컨트롤 툴바 -->
+      <div class="toolbar">
+        <button id="clearBtn" class="tool-btn" title="전체 지우기">지우기</button>
+        <button id="copyBtn" class="tool-btn" title="복사하기">복사</button>
+        <button id="soundToggleBtn" class="tool-btn active" title="사운드 켜기/끄기">🔊 소리</button>
+      </div>
+
+      <!-- 키보드 메인 레이아웃 (천지인 그리드) -->
+      <div id="cheonjiinGrid" class="keyboard-grid">
+        <!-- 행 1 -->
+        <button class="key-btn char-key" data-id="r1_1" data-label="ㅣ" data-sub="ㅓ / ㅕ" style="grid-column: span 8;">ㅣ</button>
+        <button class="key-btn char-key" data-id="r1_2" data-label="ㆍ" data-sub="ㅏ / ㅑ" style="grid-column: span 8;">ㆍ</button>
+        <button class="key-btn char-key" data-id="r1_3" data-label="ㅡ" data-sub="ㅗ / ㅛ" style="grid-column: span 8;">ㅡ</button>
+        <button class="key-btn fn-key backspace-key" data-id="backspace" style="grid-column: span 8;">⌫</button>
+        <button class="key-btn fn-key vertical-key" data-id="emoji" style="grid-column: span 8; grid-row: span 2;">이<br>모<br>지</button>
+
+        <!-- 행 2 -->
+        <button class="key-btn char-key" data-id="r2_1" data-label="ㄱ" data-sub="ㅋ / ㄲ" style="grid-column: span 8;">ㄱㅋ</button>
+        <button class="key-btn char-key" data-id="r2_2" data-label="ㄴ" data-sub="ㄹ" style="grid-column: span 8;">ㄴㄹ</button>
+        <button class="key-btn char-key" data-id="r2_3" data-label="ㄷ" data-sub="ㅌ / ㄸ" style="grid-column: span 8;">ㄷㅌ</button>
+        <button class="key-btn fn-key enter-key" data-id="enter" style="grid-column: span 8;">↵</button>
+
+        <!-- 행 3 -->
+        <button class="key-btn char-key" data-id="r3_1" data-label="ㅂ" data-sub="ㅍ / ㅃ" style="grid-column: span 8;">ㅂㅍ</button>
+        <button class="key-btn char-key" data-id="r3_2" data-label="ㅅ" data-sub="ㅎ / ㅆ" style="grid-column: span 8;">ㅅㅎ</button>
+        <button class="key-btn char-key" data-id="r3_3" data-label="ㅈ" data-sub="ㅊ / ㅉ" style="grid-column: span 8;">ㅈㅊ</button>
+        <button class="key-btn fn-key" data-id="space" style="grid-column: span 8;">└─┘</button>
+        <button class="key-btn fn-key vertical-key" data-id="langToggle" style="grid-column: span 8; grid-row: span 2;">한<br>/<br>영</button>
+
+        <!-- 행 4 -->
+        <button class="key-btn char-key" data-id="r4_1" data-label="ㅇ" data-sub="ㅁ" style="grid-column: span 8;">ㅇㅁ</button>
+        <button class="key-btn fn-key" data-id="symToggle" style="grid-column: span 8;">기호</button>
+        <button class="key-btn fn-key" data-id="hanjaToggle" style="grid-column: span 8;">한자</button>
+        <button class="key-btn fn-key" data-id="period" style="grid-column: span 8;">.</button>
+      </div>
+
+      <!-- 영문 QWERTY 모드 (숨김 토글) -->
+      <div id="qwertyGrid" class="qwerty-grid" style="display: none;">
+        <!-- JS로 동적 생성 또는 렌더링 -->
+      </div>
+
+      <!-- 기호 모드 (숨김 토글) -->
+      <div id="symbolsGrid" class="symbols-grid" style="display: none;">
+        <!-- JS로 동적 생성 또는 렌더링 -->
+      </div>
+    </div>
+  </div>
+
+  <!-- 한자 변환 모달 -->
+  <div id="hanjaModal" class="modal-overlay" style="display: none;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>한자 변환</h3>
+        <button id="closeHanjaBtn" class="close-btn">&times;</button>
+      </div>
+      <div class="modal-body">
+        <input type="text" id="hanjaSearchInput" placeholder="음 입력 (예: 한, 대, 국)" />
+        <div id="hanjaList" class="hanja-list"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
